@@ -1,0 +1,14 @@
+div.detail-container {
+    margin: auto;
+    width:70%;
+    padding: 10px;
+}
+
+a.hp {
+    color:white !important;
+    float: left;
+}
+
+a.btn {
+    float: right;
+}

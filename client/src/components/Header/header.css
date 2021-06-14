@@ -1,0 +1,11 @@
+h1.main-header a{
+    color: black;
+}
+
+h1.main-header {
+    margin-right: 15px;
+}
+
+Button {
+   margin-right: 5px !important;
+}

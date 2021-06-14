@@ -1,0 +1,14 @@
+.form-label {
+    color:white !important;
+}
+
+.review-form {
+    color:white !important;
+    margin: auto;
+    width:70% !important;
+    padding: 10px;
+}
+div.review-form span {
+    color:red !important;
+    margin-left: 10px;
+}
