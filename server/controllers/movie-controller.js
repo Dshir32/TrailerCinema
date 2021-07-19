@@ -1,6 +1,5 @@
 const express = require("express");
 const moviesLogic = require("../business-logic/movie-logic");
-
 const router = express.Router();
 
 router.get("/movies", async (request, response) => {

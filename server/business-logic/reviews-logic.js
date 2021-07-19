@@ -1,14 +1,9 @@
 const dal = require("../data-access-layer/dal");
 
 async function getMovieReviews(movieID){
-    const sql = `SELECT movies.name, reviews.reviewId, reviews.movieId, reviews.content, reviews.dateAdded, users.userId, users.firstName, users.lastName, users.profilePicUrl
-    FROM reviews 
-
-
-
-    
-    LEFT JOIN movies ON movies.movieId = reviews.movieId
-    LEFT JOIN users on users.userId = reviews.userId
+    const sql = `SELECT movies.name as movie_name, reviews.reviewId, reviews.movieId, reviews.content, reviews.dateAdded, gfusers.user_id, gfusers.name as user_name, gfusers.provider_pic as profile_pic
+    FROM reviews LEFT JOIN movies ON movies.movieId = reviews.movieId
+    LEFT JOIN gfusers on gfusers.user_id = reviews.userId
     where reviews.movieId = ${movieID}`;
     const reviews = await dal.executeAsync(sql);
     return reviews;

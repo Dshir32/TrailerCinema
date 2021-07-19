@@ -17,7 +17,6 @@ router.get("/:movieId", async (request, response) => {
 router.post("/add-review" , async (req, res) => {
     try {
         const review = req.body;
-        console.log(review);
         const addedReview = await reviewsLogic.addReview(review);
         res.status(200).json(addedReview);
     } catch(err){

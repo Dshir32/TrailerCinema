@@ -7,7 +7,8 @@ export class MovieModel {
         public date?: Date,
         public imageFileName?: string,
         public videoSource?:string,
-        public reviewsCount?:number
+        public reviewsCount?:number,
+        public embedId?:string
         ) {
 
     }

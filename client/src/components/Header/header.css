@@ -3,7 +3,11 @@ h1.main-header a{
 }
 
 h1.main-header {
-    margin-right: 15px;
+    /* margin-right: 15px; */
+    text-align: center;
+    font-family: fantasy;
+    margin: auto;
+    font-size: xxx-large;
 }
 
 Button {

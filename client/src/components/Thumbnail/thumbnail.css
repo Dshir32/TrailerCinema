@@ -1,4 +1,12 @@
-.thumbnail {
+/* .thumbnail {
     height: 50px;
     width: 50px;
+} */
+
+.video-responsive {
+    width:900px;
+    height: 600px;
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
 }

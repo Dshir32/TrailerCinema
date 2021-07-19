@@ -4,12 +4,7 @@ async function getAllMovies(){
     const sql = `SELECT movies.*, COUNT(reviews.movieId) as reviewsCount
     FROM movies
     left join reviews on movies.movieId = reviews.movieId
-    GROUP BY reviews.movieId`;
-
-
-
-
-    
+    GROUP BY movies.movieId`;
     const movies = await dal.executeAsync(sql);
     return movies;
 }

@@ -16,3 +16,27 @@ code {
 h1 {
   color:white;
 }
+
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+main {
+  margin-bottom: 150px;
+}
+ footer {
+   position: absolute;
+   bottom: 0px;
+ }

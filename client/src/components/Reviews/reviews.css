@@ -1,7 +1,8 @@
 div.detail-container {
     margin: auto;
-    width:70%;
+    width:50%;
     padding: 10px;
+    display:grid
 }
 
 a.hp {
@@ -11,4 +12,31 @@ a.hp {
 
 a.btn {
     float: right;
+}
+
+div.card > div.card-header {
+    height:80px;
+    position: relative;
+}
+
+div.card > div.card-header img {
+    position: absolute;
+    left: 5px;
+    height: 55px;
+    border-radius:25px;
+}
+
+div.card > div.card-header div.persona {
+    position: absolute;
+    left: 80px;
+    top: 34% ;
+}
+
+.card-body {
+    height: 100px;
+}
+
+.card-body footer {
+    margin-bottom: 5px;
+    right:20px;
 }

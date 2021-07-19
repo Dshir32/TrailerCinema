@@ -1,0 +1,11 @@
+footer.web-footer {
+    height:70px;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    background: black;
+    display: table;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

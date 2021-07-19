@@ -26,7 +26,7 @@ export class Reviews extends Component<any,ReviewsState>{
             const movieId = this.props.match.params.movieId;
             const response = await axios.get<ReviewModel[]>("http://localhost:3000/review/" + movieId);
             const reviews = response.data;
-            const movieName = reviews[0].name.toString();
+            const movieName = reviews[0].movie_name.toString();
             this.setState({reviews, movieName});            
         }
         catch(err){
@@ -36,28 +36,34 @@ export class Reviews extends Component<any,ReviewsState>{
 
     public render(){
         return(
-            <div className="detail-container">
-                <h2>{this.state.movieName} Reviews:</h2>  
-                {this.state.reviews.map(r => 
+            <React.Fragment>
+            <h2>{this.state.movieName} Reviews:</h2> 
+                
+            <div className="detail-container"> 
+                <NavLink to="/" className="hp"> Back to Homepage</NavLink>
+                <br></br>
+                {this.state.reviews.reverse().map(r => 
                 <div key={r.reviewId}>
-                <Card>
-                    <Card.Header>{r.firstName} {r.lastName}</Card.Header>
-                    <Card.Body>
-                        <blockquote className="blockquote mb-0">
-                        <p></p>
-                        <footer className="blockquote-footer">
-                        {r.content} <cite title="Source Title">
-                            <p></p>{r.dateAdded}</cite>
-                        </footer>
-                    </blockquote>
-                </Card.Body>
-            </Card>
-            <p></p>
+                    <Card>
+                        <Card.Header>
+                            <img src={r.profile_pic ? r.profile_pic : "/assets/images/userImage.jpg"} alt=""></img>
+                            {/* <img src="/assets/images/userImage.jpg" alt=""></img> */}
+                            <div className="persona">{r.user_name ?r.user_name : "anonymous"}</div>
+                        </Card.Header>
+                        <Card.Body>
+                            <blockquote className="blockquote mb-0">
+                                {r.content} 
+                            </blockquote>
+                            <footer className="blockquote-footer">
+                            <cite title="Source Title">{r.dateAdded}</cite>
+                            </footer>
+                        </Card.Body>
+                    </Card>
+                    <p></p>
+                </div>
+                )}          
             </div>
-            )}          
-            <NavLink to="/" className="hp"> Back to Homepage</NavLink>
-            <Button href="/review/add-review" variant="light">Submit review</Button>
-            </div>
+            </React.Fragment> 
         );
     }
 }
