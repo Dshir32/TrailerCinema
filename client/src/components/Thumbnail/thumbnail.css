@@ -4,9 +4,9 @@
 } */
 
 .video-responsive {
-    width:900px;
-    height: 600px;
+    width:700px;
+    height: 500px;
     position: absolute;
-    left: 50px;
-    bottom: 50px;
+    left: 20px;
+    bottom: 20px;
 }

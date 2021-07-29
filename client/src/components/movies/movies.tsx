@@ -5,6 +5,7 @@ import "./movies.css";
 import YoutubeEmbed, { Thumbnail } from "../Thumbnail/thumnbnail";
 import { NavLink } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
+import { Config } from "../../config";
 
 
 interface MoviesState {
@@ -28,7 +29,7 @@ export class Movies extends Component<any,MoviesState> {
 
     public async componentDidMount(){
             try{
-                const response = await axios.get<MovieModel[]>("http://localhost:3000/api/movies");
+                const response = await axios.get<MovieModel[]>(Config.serverUrl + "/api/movies");
                 const movies = response.data;
                 this.setState({ movies })
             }
@@ -66,7 +67,7 @@ export class Movies extends Component<any,MoviesState> {
                                 <Thumbnail
                                     // imageWidth={105}
                                     // imageHeight={55}
-                                    imageSource={"http://localhost:3000/uploads/" + m.imageFileName}
+                                    imageSource={Config.serverUrl + "/uploads/" + m.imageFileName}
                                     userEntersMe={this.showPreview}
                                     userLeftMe={this.removePreview} 
                                     videoSource={m.embedId}
@@ -99,7 +100,7 @@ export class Movies extends Component<any,MoviesState> {
                                 <Thumbnail
                                     // imageWidth={105}
                                     // imageHeight={55}
-                                    imageSource={"http://localhost:3000/uploads/" + m.imageFileName}
+                                    imageSource={Config.serverUrl + "/uploads/" + m.imageFileName}
                                     userEntersMe={this.showPreview}
                                     userLeftMe={this.removePreview} 
                                     videoSource={m.embedId}

@@ -9,6 +9,7 @@ import { ActionType } from "../../redux/action-type";
 import { MovieModel } from "../../models/movie-model";
 import { UserModel } from "../../models/user-model";
 import "./insert.css";
+import { Config } from "../../config";
 
 interface insertState {
     review: ReviewModel,
@@ -41,11 +42,11 @@ export class Insert extends Component<any, insertState> {
 
         try {
             //Getting all movies
-            const moviesResponse = await axios.get<MovieModel[]>("http://localhost:3000/api/movies", {withCredentials: true});
+            const moviesResponse = await axios.get<MovieModel[]>(Config.serverUrl + "/api/movies", {withCredentials: true});
             const movies = moviesResponse.data;
             this.setState({ movies });
             //Getting user
-            const userResponse = await axios.get<UserModel>("http://localhost:3000/auth/current_user", {withCredentials: true})
+            const userResponse = await axios.get<UserModel>(Config.serverUrl + "/auth/current_user", {withCredentials: true})
             const user = userResponse.data;
             const userId = user.user_id;
             this.setState({userId});
@@ -100,7 +101,7 @@ export class Insert extends Component<any, insertState> {
         }
         try {
             console.log("reached this far , Here is why " + JSON.stringify(review));
-            const response = await axios.post<ReviewModel[]>("http://localhost:3000/review/add-review", review);
+            const response = await axios.post<ReviewModel[]>(Config.serverUrl + "/review/add-review", review);
             // const addedReview = response.data;
             // console.log("added review :" , addedReview)
             this.props.history.push("/review/" + review.movieId);

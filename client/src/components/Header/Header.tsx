@@ -8,6 +8,7 @@ import { store } from "../../redux/store";
 import { Unsubscribe } from "redux";
 import { ActionType } from "../../redux/action-type";
 import './header.css';
+import { Config } from "../../config";
 
 interface HeaderState {
     user: UserModel[];
@@ -32,7 +33,7 @@ export class Header extends Component<any,HeaderState> {
             this.setState({ user });
         })
         try {  
-            const response = await axios.get<UserModel>("http://localhost:3000/auth/current_user", {withCredentials: true});
+            const response = await axios.get<UserModel>(Config.serverUrl + "auth/current_user", {withCredentials: true});
             if(response) {
                 const user = response.data;
                 const userName = user.name;
@@ -60,8 +61,8 @@ export class Header extends Component<any,HeaderState> {
                             <a href="/">Trailer Cinema</a></h1>
                         <Navbar.Collapse className="justify-content-end">
                             {this.state.user ? <p style={{margin: `10px`}}>Hey {this.state.userName}</p> : null}
-                            {!this.state.userName ? <Button href="http://localhost:3000/auth/google/"  variant="outline-dark">Login with google</Button> : null}
-                            {this.state.userName ? <Button href="http://localhost:3000/auth/logout" variant="outline-dark">Logout</Button> : null}
+                            {!this.state.userName ? <Button href="/auth/google/"  variant="outline-dark">Login with google</Button> : null}
+                            {this.state.userName ? <Button href="/auth/logout" variant="outline-dark">Logout</Button> : null}
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
