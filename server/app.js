@@ -1,4 +1,4 @@
-global.config = require("./config/config.json");
+global.config = require(process.env.NODE_ENV === "production" ? "./config/config-prod.json" : "./config/config-dev.json");
 const express = require("express");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
@@ -23,6 +23,7 @@ server.use(
 server.use(passport.initialize());
 server.use(passport.session());
 
+server.use(express.static(path.join(__dirname, "./_front-end")))
 server.use(express.static(__dirname));
 
 server.use(cors({
@@ -34,5 +35,5 @@ server.use("/review", reviewsControllers);
 server.use("/api", moviesControllers);
 server.use("/", googleOauthController);
 
-
-server.listen(3000, () => console.log("listening on http://localhost:3000"));
+const port = process.env.PORT || 3000;
+server.listen(port, () => console.log(`listening on port ${port}`));
