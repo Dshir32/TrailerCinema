@@ -67,7 +67,7 @@ export class Movies extends Component<any,MoviesState> {
                                 <Thumbnail
                                     // imageWidth={105}
                                     // imageHeight={55}
-                                    imageSource={Config.serverUrl + "/uploads/" + m.imageFileName}
+                                    imageSource={Config.serverUrl + "/assets/images/" + m.imageFileName}
                                     userEntersMe={this.showPreview}
                                     userLeftMe={this.removePreview} 
                                     videoSource={m.embedId}
@@ -100,7 +100,7 @@ export class Movies extends Component<any,MoviesState> {
                                 <Thumbnail
                                     // imageWidth={105}
                                     // imageHeight={55}
-                                    imageSource={Config.serverUrl + "/uploads/" + m.imageFileName}
+                                    imageSource={Config.serverUrl + "/assets/images/" + m.imageFileName}
                                     userEntersMe={this.showPreview}
                                     userLeftMe={this.removePreview} 
                                     videoSource={m.embedId}

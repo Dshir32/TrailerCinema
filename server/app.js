@@ -6,9 +6,10 @@ const keys = require("./config/keys");
 const moviesControllers = require("./controllers/movie-controller");
 const reviewsControllers = require("./controllers/reviews-controller");
 const googleOauthController = require('./controllers/googleOauth-controller');
-const userController = require('./controllers/user-controller');
 const passport = require ('passport')
-require('./services/passportGoogle');
+require("./services/passportGoogle");
+
+const path = require("path");
 const server = express();
 
 server.use(cors());
@@ -23,17 +24,21 @@ server.use(
 server.use(passport.initialize());
 server.use(passport.session());
 
-server.use(express.static(path.join(__dirname, "./_front-end")))
-server.use(express.static(__dirname));
+server.use(express.static(path.join(__dirname, "./_front-end")));
 
+// server.use(express.static(__dirname));
 server.use(cors({
-    origin:"http://localhost:3001", //Address of the client 
+    origin: ["http://localhost:3001","https://trailer-cinema.herokuapp.com"] , //Address of the client 
     credentials: true //allows session cookie
 }));
 
+server.use("/", googleOauthController);
 server.use("/review", reviewsControllers);
 server.use("/api", moviesControllers);
-server.use("/", googleOauthController);
+
+server.use("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./_front-end/index.html"));
+});
 
 const port = process.env.PORT || 3000;
-server.listen(port, () => console.log(`listening on port ${port}`));
+server.listen(port, () => console.log(`Listening on http://localhost:${port}`));

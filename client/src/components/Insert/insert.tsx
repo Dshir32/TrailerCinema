@@ -71,8 +71,7 @@ export class Insert extends Component<any, insertState> {
         const movieId = +args.target.value;
         const review = {...this.state.review};
         review.movieId = movieId;
-        review.dateAdded = new Date().toLocaleString().split(",")[0];;
-        // 
+        review.dateAdded = new Date().toLocaleString().split(",")[0];
         this.setState({review});
     }
 
@@ -100,10 +99,7 @@ export class Insert extends Component<any, insertState> {
             return
         }
         try {
-            console.log("reached this far , Here is why " + JSON.stringify(review));
-            const response = await axios.post<ReviewModel[]>(Config.serverUrl + "/review/add-review", review);
-            // const addedReview = response.data;
-            // console.log("added review :" , addedReview)
+            await axios.post<ReviewModel[]>(Config.serverUrl + "/review/add-review", review);
             this.props.history.push("/review/" + review.movieId);
         } catch(err) {
             console.log("Error: " + err.message);

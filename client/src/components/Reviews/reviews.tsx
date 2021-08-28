@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { ReviewModel } from "../../models/review-model";
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import "./reviews.css";
 import { Config } from "../../config";
 

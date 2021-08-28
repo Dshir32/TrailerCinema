@@ -23,7 +23,7 @@ export class Layout extends Component {
                             <Route path="/" component={Movies} exact></Route>
                             <Route path="/review/add-review" component={Insert} exact></Route>
                             <Route path="/review/:movieId" component={Reviews} exact></Route>
-                            <Route path ="/*" component={PageNotFound}></Route>
+                            {/* <Route path ="/*" component={PageNotFound}></Route> */}
                         
                             {/* <Route path="**" component={Movies} exact></Route> */}
                         </Switch>

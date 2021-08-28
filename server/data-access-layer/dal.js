@@ -8,14 +8,16 @@ const connection = mysql.createPool({
     database: config.mysql.database
 });
 
+console.log(`We're Connected to ${config.mysql.database} Database on MySQL.`);
+
 // Connect to northwind: 
-connection.connect(err => {
-    if (err) {
-        console.error(err);
-        return;
-    }
-    console.log("We're connected to our database on MySQL.");
-});
+// connection.connect(err => {
+//     if (err) {
+//         console.error(err);
+//         return;
+//     }
+//     console.log("We're connected to our database on MySQL.");
+// });
 
 // Execute SQL statement:
 function executeAsync(sql) {
