@@ -7,13 +7,13 @@ While hovering a movie a youtube trailer of the movie will appear
 Users can add review for a movie only after logging in , login is enabled with Google account.
 
 #SERVER SIDE
-  node.js
-  express
-  heroku
-  mysql, sql
+  node.js,
+  express,
+  heroku,
+  mysql, sql,
   google-oauth
   
 #CLIENT SIDE
-  React, Redux
+  React, Redux,
   bootstrap
   
